@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var User = mongoose.model('Badge');
+var Badge = mongoose.model('Badge');
 var passport = require('passport');
 var jwt = require('express-jwt');
 var auth = jwt({secret: process.env.JWTSECRET || 'SECRET', userProperty: 'payload'});
@@ -13,6 +13,15 @@ router.get('/', function(req, res, next) {
       return next(err);
     }
     res.json(badges);
+  });
+});
+
+router.post('/', function(req, res, next) {
+  var badge = new Badge(req.body);
+
+  badge.save(function(err, badge){
+    if(err){return next(err);};
+    res.json(badge);
   });
 });
 
