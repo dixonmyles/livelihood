@@ -18,6 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   var badge = new Badge(req.body);
+  badge.creator = req.payload.username;
 
   badge.save(function(err, badge){
     if(err){return next(err);};
