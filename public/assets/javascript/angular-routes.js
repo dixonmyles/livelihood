@@ -18,4 +18,14 @@ angular.module('Been').config(function($routeProvider){
       templateUrl: "assets/templates/badges/show.html",
       controller: "BadgesShowCtrl"
     })
+
+    .when('/login', {
+      templateUrl: "assets/templates/login.html",
+      controller: "AuthCtrl"
+    })
+
+    .when('/register', {
+      templateUrl: "assets/templates/register.html",
+      controller: "AuthCtrl"
+    })
 });
